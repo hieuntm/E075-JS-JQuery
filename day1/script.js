@@ -132,7 +132,12 @@ function tenHam() {
     // return
 }
 
-tenHam();
+function Login(username, password) {
+    console.log("Ở trong hàm")
+    // return
+}
+
+// tenHam();
 
 
 

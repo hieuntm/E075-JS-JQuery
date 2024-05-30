@@ -1,7 +1,9 @@
 
 function tenHam() {
-    console.log("Ở trong hàm"); // In ra console
-    alert("Noi dung") // In trực tiếp ra browser
+    // console.log("Ở trong hàm"); // In ra console
+    // alert("Noi dung") // In trực tiếp ra browser
+    document.write(5 + 6);
+
     // return
 }
 
