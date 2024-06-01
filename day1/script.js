@@ -2,17 +2,17 @@ console.log("123412312");
 
 // cd: change directory
 // ls: list item on directory
-// cd: .. -> Go back
+// cd: .. -o thuc
+// 3. char - kieu 1 ky tu
+// 4. void
+// 5. boolean -> toan tu logic
+// > Go back
 // pwd: Display current location
 // clear: clean history
 
 // Trong C
 // 1. int - so nguyen
-// 2. float, double - so thuc
-// 3. char - kieu 1 ky tu
-// 4. void
-// 5. boolean -> toan tu logic
-
+// 2. float, double - s
 // Trong JS
 // Co kieu so : Dung de the hien ca so thuc va so nguyen
 // Co kieu String '' ""
