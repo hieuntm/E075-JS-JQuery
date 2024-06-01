@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="math.js"></script>
+
+</head>
+<body>
+    <div>
+        <button id="buttonDown" onclick="minusValue()" 
+        onmouseover="display()"
+        onmouseleave="outDisplay()">-</button>
+        <progress id="file" value="32" max="1000"> 32% </progress>
+        <button onclick="addValue()">+</button>
+    </div>
+
+
+    <table>
+        <tr>
+            <td>
+                a:
+            </td>
+            <td>
+                <input id="a" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                b:
+            </td>
+            <td>
+                <input id="b" type="text"/>
+            </td>
+        </tr>
+
+    </table>
+    <button onclick="doMath('+')">+</button>
+    <button onclick="doMath('-')">-</button>
+    <button onclick="doMath('*')">*</button>
+    <button onclick="doMath('/')">/</button>
+
+    <p id="result">Result: </p>
+
+</body>
+</html>
