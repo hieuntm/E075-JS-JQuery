@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <script>
+            function clicks(){
+                // Logic
+                console.log("HEllo");
+                alert("Hello");
+            }
+            function dbclicks(){
+                // Logic
+                console.log("HEllo hello");
+                alert("Hello dbclick");
+            }
+            // document.getElementById;
+            // document.getElementsByTagName;
+            // document.getElementsByClassName;
+
+            // document.getElementsByName;
+
+            // const ps = document.getElementsByName("test");
+            // // Trả về thẻ -> Đối tượng
+            // ps.setAttribute("value", "20");
+            // console.log(ps);
+        </script>
+    </head>
+    <body>
+        <input name="test"/>
+        <p>Text12</p>
+        <p>Text13</p>
+        <p>Text14</p>
+        <a href="#"  ondblclick="dbclicks()">Click here</a>
+        <!-- Cách trên là cách 1 -->
+        <button id="buttonClick">Click2</button>
+        <!-- <button onclick="click()">Tinh toan</button> -->
+        <br>
+        <button class="clickList">Click here</button>
+        <button class="clickList">Click here</button>
+        <button class="clickList">Click here</button>
+        <button class="clickList">Click here</button>
+        <button class="clickList">Click here</button>
+        <button class="clickList">Click here</button>
+
+        <p id="helloW" onclick="clickP()">Hello wolrd</p>
+
+        <script>
+
+            function clickP(){
+                console.log("Click vào PPPPPP");
+            }
+
+            document.getElementById("helloW").addEventListener("click", () => {
+                console.log("Click vào thẻ p")
+            })
+
+            document.getElementById("helloW").addEventListener("click", () => {
+                console.log("Click vào thẻ p from HA")
+            })
+
+            document.getElementById("helloW").addEventListener("click", () => {
+                console.log("Click vào thẻ p HELLO XXXXX")
+            })
+
+            let buttons = document.getElementsByClassName("clickList");
+            //
+            // buttons[0].onclick =  () => {
+            //         alert("Hàm mũi tên : " + i);
+            // } // => Thẻ button
+
+            // buttons[1].onclick =  () => {
+            //     alert("Hàm mũi tên : " + i);
+            // } // => Thẻ button
+
+            // buttons[2].onclick =  () => {
+            //     alert("Hàm mũi tên : " + i);
+            // } // => Thẻ button
+            // Mảng có 6 phần tử
+            for(let i = 0; i < buttons.length; i++){
+                buttons[i].onclick =  () => {
+                    alert("Hàm mũi tên : " + i);
+                } // => Thẻ button
+            }
+
+
+            const button = document.getElementById("buttonClick");
+            // Trả về thẻ button
+            button.onclick =  () => {
+                alert("Hàm mũi tên");
+            }
+            // Viết gộp
+
+            // function ClikButton(){
+            //     alert("Hello from click 2 3423");
+            // }
+            // button.onclick = ClikButton;
+            // Viết tách
+        </script>
+
+
+        
+    </body>
+</html>

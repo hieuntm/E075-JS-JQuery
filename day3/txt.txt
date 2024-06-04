@@ -1,0 +1,8 @@
+1. Bật file HTML -> Tự động chạy, không cần biết là có hàm main hay không
+2. Cài đặt nodejs
+ node + <tenfile>.js
+
+
+Có 2 cách để thêm file js vào HTML
+1. là thông qua thẻ script
+2. là các bạn viết tách ra thành file js

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function tinhToan(){
+            const temp = document.getElementById("chieucao");
+            const p = document.getElementById("ketqua");
+            console.log("Chieucao: ", temp);
+            console.log("p:", p);
+            // var
+            const chieucao = Number(document.getElementById("chieucao").value);
+            const cannang = Number(document.getElementById("cannang").value);
+
+            // chieucao = Number(chieucao);
+
+            console.log(chieucao, cannang);
+
+            const BMI = cannang / (chieucao * chieucao);
+
+            document.getElementById("ketqua").innerHTML = BMI;
+        }
+    </script>
+</head>
+<body>
+    <!-- Nhập cân nặng, nhập chiều cao -->
+    <!-- Tính chỉ số BMI dựa vào công thức cân nặng/(chiều cao*chiều cao)  -->
+    <!--  -->
+
+    <!-- Nhập bằng thẻ input từ HTML -->
+    <!-- Lấy bằng cách bấm vào nút button/input -->
+    <!-- Gọi 1 hàm bằng javascript -->
+    <!-- Lấy dữ liệu bằng document. => DOM -->
+    <!-- Tính toán -->
+    <!-- Hiển thị lên trên HTML bằng DOM -->
+
+    <label>Xin mời nhập chiều cao: </label>
+    <input id="chieucao" type="number"/>
+    <br>
+    <label>Xin mời nhập cân nặng: </label>
+    <input id="cannang" type="number" />
+    <br>
+    <!-- <input type="submit" value="Tính toán" onclick="tinhToan()"/> -->
+    <button onclick="tinhToan()">Tinh toan</button>
+    <br>
+    <p id="ketqua">Result: </p>
+    outerHTML -> p Result:
+    innerHTML - > Result:
+
+    <!-- Bài tập 1 
+        Tạo ra 1 form đăng nhập, 
+        Yêu cầu: username là GreenAcademy
+                password là 123456789
+    Nhập đúng thì thông báo là đăng nhập thành công
+    Nhập sai thì thông báo nội dung sai -> Sai MK -> Sai MK
+                                        -> Sai username -> Sai username -->
+
+    <!-- Bài tập 2 -->
+    <!-- Tạo ra 5 thẻ p với nội dung khác nhau -->
+    <!-- Tạo ra 1 button -->
+    <!-- Với mỗi click ở button thì thông báo nội dung của thẻ p tương ứng theo thứ tự-->
+
+    <!-- Bài tập 3 -->
+    <!-- Tạo ra một 2 button với nội dung "Hiện" và "Ẩn" -->
+    <!-- Khi click vào "Hiện" thì hiện ra image -->
+    <!-- Khi click vào "Ẩn" thì tắt image đi -->
+
+    <!-- Bài tập 4 -->
+    <!-- Tạo ra 2 thẻ input: Yêu cầu nhập riêng biệt, "số hàng" và "số cột" -->
+    <!-- Tạo ra 1 nút button:  -->
+    <!-- Khi click vào button: Sẽ sinh ra một bảng <table> với số cột và số dòng tương ứng -->
+    <!-- Nội dung trong bảng tùy chọn -->
+
+   
+</body>
+</html>

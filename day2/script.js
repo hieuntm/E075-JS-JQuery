@@ -95,6 +95,8 @@ function add(a = 10, b = 15){
     return a + b;
 }
 
+const add = (a, b) => a + b;
+
 const tinhToan = add(30, 20);
 console.log("Tinh tong: ", tinhToan); // NaN = > Not a number
 
