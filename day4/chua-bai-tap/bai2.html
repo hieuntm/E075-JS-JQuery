@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let index = 0;
+        function onClick(){
+            if(index > 4){
+                index = 0;
+            }
+            const array = document.getElementsByTagName("p");
+            
+            const noiDungCanHienThi = array[index].innerHTML;
+            alert(noiDungCanHienThi);
+            index++;
+        }
+    </script>
+</head>
+<body>
+    <p>Noi dung 1</p>
+    <p>Noi dung bai bao</p>
+    <p>Noi dung Green Academy</p>
+    <p>Noi dung Hoc tap</p>
+    <p>Noi dung gaming</p>
+    <button onclick="onClick()">Click here</button>
+</body>
+</html>

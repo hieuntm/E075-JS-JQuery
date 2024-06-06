@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function onClick(action){
+            const img = document.getElementById("myPhto");
+            // Trả về thẻ image
+            if(action === 'show'){
+                // Hiển thị
+                img.style.display = "inline";
+            }
+            if(action === 'hide'){
+                // Ẩn ảnh
+                img.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="onClick('show')">Hiện</button>
+    <button onclick="onClick('hide')">Ẩn</button>
+    <br>
+    <img id="myPhto" src="Ảnh biệt thự.jpg" width="400" height="400"/>
+</body>
+</html>

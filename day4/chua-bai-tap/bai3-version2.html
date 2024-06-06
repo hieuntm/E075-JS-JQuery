@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function onShow(){
+            const img = document.getElementById("myPhto");
+            // Trả về thẻ image
+            img.style.display = "inline";
+            // job -> jod
+        } // showImg, hideImg -> showimg, hideImg
+        function onHide(){
+            const img = document.getElementById("myPhto");
+            img.style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <button onclick="onShow()">Hiện</button>
+    <button onclick="onHide()">Ẩn</button>
+    <br>
+    <img id="myPhto" src="Ảnh biệt thự.jpg" width="400" height="400"/>
+</body>
+</html>

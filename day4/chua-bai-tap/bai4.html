@@ -1,0 +1,63 @@
+<!-- Bài tập 4 -->
+<!-- Tạo ra 2 thẻ input: Yêu cầu nhập riêng biệt, "số hàng" và "số cột" -->
+<!-- Tạo ra 1 nút button:  -->
+<!-- Khi click vào button: Sẽ sinh ra một bảng <table> với số cột và số dòng tương ứng -->
+<!-- Nội dung trong bảng tùy chọn -->
+<!-- Dùng for để lặp -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .p {
+            /* border: ; */
+            border-color: red;
+            border-style: solid;
+            border-bottom: 2px;
+            border-width: 2px;
+        }
+    </style>
+    <script>
+        function handle(){
+            const soHang = Number(document.getElementById("sohang").value);
+            const soCot = Number(document.getElementById("socot").value);
+
+            const table = document.createElement("table");
+            for(let i = 0; i < soHang; i++){
+                const tr = document.createElement("tr");
+                for(let j = 0; j < soCot; j++){
+                    const td = document.createElement("td");
+                    td.textContent = i + j;
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+            // table.style.borderColor = "red";
+            // table.style.borderStyle = "solid";
+            table.style.border = "1px solid red";
+            table.border = 1;
+
+            console.log(table);
+            const div = document.getElementById("content");
+            div.appendChild(table);
+
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <label>Số hàng:</label>
+        <input id="sohang"/>
+    </div>
+    <div>
+        <label>Số cột:</label>
+        <input id="socot"/>
+    </div>
+    <button onclick="handle()">Click</button>
+    <div id="content">
+
+    </div>
+</body>
+</html>

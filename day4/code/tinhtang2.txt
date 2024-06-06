@@ -1,0 +1,5 @@
+    Tạo ra 1 form đăng ký, 
+        Yêu cầu: nhập username
+                 nhập password 
+                 nhập re-password
+    Yêu cầu: Nhập đúng mật khẩu và mật khẩu xác nhập thì mới được phép tạo tài khoản

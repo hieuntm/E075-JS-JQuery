@@ -1,0 +1,9 @@
+Hệ thống số dư account
+
+Balance: Số dư tài khoản:
+
+Withdraw: Rút tiền
+
+Deposite: Nạp tiền
+
+Transfer: Chuyển tiền
