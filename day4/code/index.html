@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
 </head>
 
 <body>
-    <p> Balance: </p>
+    <p id="balance"> Balance: </p>
+    <button onclick="displayBalance()">Display</button>
     <button onclick="rutTien()">Rút tiền:</button>
     <button onclick="napTien()">Nạp tiền:</button>
-    <div>
-        <p style="color: red">Vừa rút bn$ tiền</p>
+    <div id="history">
+        <!-- <p style="color: red">Vừa rút bn$ tiền</p>
         <p style="color: green">Vừa nạp bn$ tiền</p>
         <p style="color: red">Vừa rút bn$ tiền</p>
+     -->
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
