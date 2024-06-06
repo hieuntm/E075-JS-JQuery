@@ -1,11 +1,21 @@
+"use strict";
 let soDu = 1000;
 const lichSuTaiKhoan = []; // => Xem lich su nap tien/ rut tien
+const input = prompt("Xin mời nhập số tiền cần nạp");
+const soTien = +input; // + cho phép đổi thành số
+// soTien sẽ là NaN nếu nhập chữ
+console.log("Ngoài: ", soTien, typeof soTien);
+if (!isNaN(soTien)) {
+    console.log("trong: ", soTien, typeof soTien);
+}
+
 
 function napTien() {
     const soTien = prompt("Xin mời nhập số tiền cần nạp");
     // Kiểm tra soTien
     // Kiểm tra nó có phải số hay không => if (typeof soTien === Number)
     // lichSu => +soTien
+
 
     lichSuTaiKhoan.push(+soTien);
     console.log(lichSuTaiKhoan)
