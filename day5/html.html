@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script2.js" defer>
+    </script>
+</head>
+<body>
+    <table id="dangNhapTable">
+        <tr>
+            <td>
+                <label>Username: </label>
+                <div>
+                    <p id="error-message" style="display: none;"></p>
+                </div>
+            </td>
+            <td>
+                <input id="username" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Password: </label>
+            </td>
+            <td>
+                <input id="password" type="password"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="dangNhap()">Dang nhap</button>
+            </td>
+            <td>
+                <button>Dang ky</button>
+            </td>
+        </tr>
+    </table>
+    
+
+    <div id="bank" style="display: none;">
+        <p id="balance">Balance: </p>
+        <table id="dangNhapTable">
+            <tr >
+                <td>
+                    So tien muon chuyen
+                </td>
+                <td>
+                    <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button>Chuyen Tien</button>
+                </td>
+                <td>
+                    <button>Rut Tien</button>
+                </td>
+                <td>
+                    <button>Nap Tien</button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+</body>
+</html>
