@@ -22,3 +22,29 @@ const onClick2 = () => {
     p.classList.remove("none") // => add thêm các class css có sẵn
     p.classList.add("display");
 }
+
+class Product {
+
+}
+
+const products = [];
+
+
+const onClick3 = () => {
+    const div = document.getElementById("products");
+    const div2 = document.createElement("div");
+    div2.classList.add("row")
+    for(let i = 0; i < products.length; i ++){
+        const div3 = document.createElement("div");
+        div3.classList.add("col-3");
+
+        //img, p (price), p (name)
+
+        const p = document.createElement("p");
+        p.innerHTML = " HELLO WOLRD " + i;
+        
+        div3.appendChild(p);
+        div2.appendChild(div3);
+    }
+    div.appendChild(div2);
+}
