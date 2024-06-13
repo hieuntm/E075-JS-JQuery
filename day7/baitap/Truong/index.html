@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #game {
+            display: none;
+        }
+        #reset {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Guess</h1>
+        <p>Nhập vào min và max (hãy chắc chắn giá trị min nhỏ hơn giá trị max)</p>
+        <label for="min">Từ: </label>
+        <input type="number" id="min" step="1">  
+        <label for="max">Đến: </label>
+        <input type="number" id="max" step="1">
+        <button onclick="setRange()">Đặt khoảng</button>
+        <div id="game">
+            <p>Đặt trong khoảng vừa nhập:</p>
+            <input type="number" id="guessInput">
+            <button onclick="guess()">Đoán</button>
+            <p id="notification"></p>
+            <p id="nankai">Số lần đoán: </p>
+            <button onclick="resetGame()" id="reset">Reset Game</button>
+        </div>
+    </div>
+    <script>
+        let randomNumber;
+        let nankai = 0;
+        let min, max;
+
+        function setRange() {
+            min = Number(document.getElementById('min').value);
+            max = Number(document.getElementById('max').value);
+            if (min >= max) {
+                alert('Xin hãy nhập giá trị hợp lệ.');
+                return;
+            }
+            randomNumber = Math.floor(Math.random() * (max - min + 1 )) + min;
+            nankai = 0;
+            document.getElementById('game').style.display = 'block';
+            document.getElementById('notification').textContent = '';
+            document.getElementById('nankai').textContent = 'Số lần đoán : ';
+            document.getElementById('reset').style.display = 'none';
+            }
+
+        function guess() {
+            const guessInput = document.getElementById('guessInput').value;
+            const noti = document.getElementById('notification');
+            const nankaiDisplay = document.getElementById('nankai');
+            const guessNumber = Number(guessInput);
+            
+            if (typeof guessNumber !== "number" || guessNumber < min || guessNumber > max) {
+                noti.textContent = 'Vui lòng nhập một số hợp lệ trong khoảng ' + min + ' và ' + max ;
+                    return;
+            }
+            nankai++;
+            nankaiDisplay.textContent = 'Số lần đoán ' + nankai;
+            
+            if (guessNumber === randomNumber) {
+                noti.textContent = 'Chúc mừng! Bạn đã đoán đúng số ' + randomNumber + ' sau ' + nankai +' lần đoán.';
+                document.getElementById('reset').style.display = 'inline';
+            } else if(typeof guessNumber !== "number" || guessNumber < randomNumber){
+                noti.textContent = 'Số của bạn đoán nhỏ hơn. Thử lại.';
+            } else {
+                noti.textContent = 'Số của bạn đoán lớn hơn. Thử lại.';
+            }            
+        }
+        function resetGame() {
+            document.getElementById('guessInput').value = '';
+            document.getElementById('game').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

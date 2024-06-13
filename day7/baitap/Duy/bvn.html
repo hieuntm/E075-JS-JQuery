@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đoán Vietlott</title>
+</head>
+<body>
+    <div bg-dark>
+        <h1>Đoán Vietlott</h1>
+        <input type="number" id="userGuess">
+        <button onclick="checkso()">Thử vận may</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        var randomNumber = Math.trunc(Math.random() * 100) + 1; // - 1 - 100
+
+        function checkso() {
+            var userGuess = parseInt(document.getElementById("userGuess").value);
+            if (userGuess === randomNumber) {
+                document.getElementById("result").innerText = "Chúc mừng bạn đã trúng Vietlott 30 tỉ.";
+            } else if (userGuess < randomNumber) {
+                document.getElementById("result").innerText = "Số này thấp rồi, Cố lên!";
+            } else {
+                document.getElementById("result").innerText = "Số này cao rồi, Cố lên!";
+            }
+        }
+    </script>
+
+</body>
+</html>

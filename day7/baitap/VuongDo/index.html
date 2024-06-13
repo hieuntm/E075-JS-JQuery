@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Đoán Số Ngẫu Nhiên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        #container {
+            background-color: white;
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #result {
+            margin: 20px 0;
+            font-size: 24px;
+            color: green;
+        }
+        #score {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        input[type="number"] {
+            width: 50px;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Game Đoán Số Ngẫu Nhiên</h1>
+        <p>Đoán số từ 0 đến 100</p>
+        <input type="number" id="doan" min="0" max="100">
+        <button onclick="kiemTraDoan()">Đoán</button>
+        <div id="ketQua"></div>
+        <div id="diem"></div>
+    </div>
+
+    <script>
+        let soNgauNhien = Math.trunc(Math.random() * 100) + 1;
+        let diemSo = 100;
+        let cacLanDoanTruoc = [];
+
+        function kiemTraDoan() {
+            const doan = parseInt(document.getElementById('doan').value);
+            const ketQua = document.getElementById('ketQua');
+            const hienThiDiem = document.getElementById('diem');
+
+            if (isNaN(doan) || doan < 0 || doan > 100) {
+                ketQua.textContent = 'Vui lòng nhập một số từ 0 đến 100.';
+                ketQua.style.color = 'red';
+                return;
+            }
+
+            if (doan === soNgauNhien) {
+                ketQua.textContent = `Chúc mừng! Bạn đã đoán đúng số ${soNgauNhien}.`;
+                ketQua.style.color = 'green';
+                hienThiDiem.textContent = `Điểm của bạn: ${diemSo}`;
+            } else {
+                diemSo -= 3; 
+                if (diemSo <= 0) {
+                    diemSo = 0;
+                    ketQua.textContent = `Bạn đã thua! Số đúng là ${soNgauNhien}.`;
+                    ketQua.style.color = 'red';
+                } else {
+                    let goiY = `Sai rồi! Gợi ý: Số đúng ${doan < soNgauNhien ? 'lớn hơn' : 'nhỏ hơn'} ${doan}.`;
+
+                    ketQua.textContent = goiY;
+                    ketQua.style.color = 'red';
+                }
+                hienThiDiem.textContent = `Điểm của bạn: ${diemSo}`;
+
+                
+                cacLanDoanTruoc.push(doan);
+            }
+        }
+    </script>
+</body>
+</html>
