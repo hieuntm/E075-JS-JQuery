@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible=" IE="edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="excercise.js" defer></script>
+
+    <style>
+        #dangNhapTable {
+            /* background-color: rgb(81, 231, 231); */
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            /* align-items: center; */
+            height: 100vh;
+        }
+
+        .centered-table {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row px-5">
+            <h2 id="form-title">Đăng nhập tài khoản</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="dangNhapTable">
+
+            <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+                    aria-expanded="false" aria-controls="multiCollapseExample1">Form đăng nhập</a>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#multiCollapseExample2" aria-expanded="false"
+                    aria-controls="multiCollapseExample2">Form đăng ký</button>
+
+            </p>
+            <div class="row">
+                <div class="col">
+                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                        <div class="card card-body">
+                            <div id="sign-in-form" class="row">
+                                <table>
+                                    <div>
+                                        <p id="error-message" style="display: none;"></p>
+                                    </div>
+                                    <tr>
+                                        <td>
+                                            <label>Username: </label>
+                                        </td>
+                                        <td>
+                                            <input id="username" type="text" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Password: </label>
+                                        </td>
+                                        <td>
+                                            <input id="password" type="password" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button class="btn btn-primary" onclick="dangNhap()">Đăng nhập</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="collapse multi-collapse" id="multiCollapseExample2">
+                        <div class="card card-body">
+                            <div id="sign-up-form" class="row">
+                                <table>
+                                    <div>
+                                        <p id="error-message-dk" style="display: none;"></p>
+                                    </div>
+                                    <tr>
+                                        <td>
+                                            <label>Username: </label>
+                                        </td>
+                                        <td>
+                                            <input id="usernamedk" type="text" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Password: </label>
+                                        </td>
+                                        <td>
+                                            <input id="passworddk" type="password" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Re-Password: </label>
+                                        </td>
+                                        <td>
+                                            <input id="re-passworddk" type="password" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button class="btn btn-primary" onclick="dangKy()">Đăng ký</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <div id="bank" class="container">
+            <div class="row">
+                <h3 id="balance">Balance: </h3>
+            </div>
+            <div class="row w-25">
+                <button class="btn btn-primary" onclick="dangXuat()">Đăng xuất</button>
+            </div>
+
+            <br>
+
+            <table class="table">
+                <tr>
+                    <td>
+                        <h3>Nạp tiền</h3>
+                    </td>
+                    <td>
+                        <input type="number" id="soTienNap" placeholder="Nhập số tiền">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" onclick="napTien()">Nạp tiền</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Rút tiền</h3>
+                    </td>
+                    <td>
+                        <input type="number" id="soTienRut" placeholder="Nhập số tiền">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" onclick="rutTien()">Rút tiền</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Chuyển tiền</h3>
+                    </td>
+                    <td>
+                        <input type="text" id="tenTKchuyenToi" placeholder="Tài khoản nhận tiền">
+                    </td>
+                    <td>
+                        <input type="number" id="soTienChuyen" placeholder="Nhập số tiền">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" onclick="chuyenTien()">Chuyển tiền</button>
+                    </td>
+                </tr>
+            </table>
+
+            <div id="history">
+
+            </div>
+        </div>
+</body>
+
+</html>
