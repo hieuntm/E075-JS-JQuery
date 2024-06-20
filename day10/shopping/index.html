@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Add book</h2>
+    <div class="wrap">
+      <div class="field">
+        <label>Name:</label>
+        <input type="text" name="name" id="name">
+      </div>
+      <div class="field">
+        <label>Price:</label>
+        <input type="number" name="price" id="price">
+      </div>
+      <div class="field">
+        <label>Author:</label>
+        <input type="text" name="author" id="author">
+      </div>
+      <div class="field">
+        <label>Publisher:</label>
+        <input type="text" name="publisher" id="publisher">
+      </div>
+      <button type="submit" id="submit">+ Add</button>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <h3>Cart</h3>
+  </div>
+  <hr>
+  <div class="container">
+    <h2>List Books</h2>
+    <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+    <input type="text" class="search" id="search_value" placeholder="Book's name or Author's name">
+    <button id="btn_search">Search</button><br><br>
+    <input type="text" id="min" placeholder="Min price">
+    <input type="text" id="max" placeholder="Max price">
+    <button id="btn_search_price">Search</button> <br><br>
+    <button id="sortButton" onclick="toggleSortOrder()">Sắp xếp theo giá tăng dần</button>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Author</th>
+          <th>Publisher</th>
+          <th>Quantity</th>
+          <th>Add To Cart</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody id="list_books">
+
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>

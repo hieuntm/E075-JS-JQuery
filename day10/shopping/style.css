@@ -1,0 +1,12 @@
+.field label{
+    width: 70px;
+}
+.wrap{
+    width: 100%;
+}
+input.search{
+    width: 300px    ;
+}
+td span:hover{
+    cursor: pointer;
+} 
