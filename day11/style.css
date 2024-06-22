@@ -1,0 +1,38 @@
+.field label{
+    width: 70px;
+}
+.wrap{
+    width: 100%;
+}
+input.search{
+    width: 300px    ;
+}
+td span:hover{
+    cursor: pointer;
+} 
+.hidden{
+    display: none
+}
+
+/* Dùng classList.add */
+.overlay-level1 { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 50%;
+    height: 50%;
+    background-color: antiquewhite;
+
+    z-index: 10;
+}
+
+.capacity-low {
+    opacity: 0.5;
+}
+
+.capacity-default {
+    opacity: 1;
+}
