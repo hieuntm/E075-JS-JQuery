@@ -9,12 +9,16 @@ class Book {
     }
 }
 
-const cart = {
-    items: [],
-    totalPrice: 0,
-    discount: 0,
-    coupon: 0
+const defaultCartValue = () => {
+    return {
+        items: [],
+        totalPrice: 0,
+        discount: 0,
+        coupon: 0
+    };
 }
+
+let cart;
 
 // Button
 const btn = document.getElementById('submit'); //=> add new
@@ -24,6 +28,20 @@ const btn_sort = document.getElementById('sortButton');
 const btn_show_cart = document.getElementById('showCartButton');
 const btn_order = document.getElementById("order-button");
 const btn_close_modal_overlay = document.getElementById("closeOverlay");
+
+const btn_close_add_form = document.getElementById("closeAddForm");
+const btn_close_cart_form = document.getElementById("closeCartForm");
+
+const btn_show_add_form = document.getElementById("showAddBookForm");
+const btn_show_cart_form = document.getElementById("showCartForm");
+
+const btn_close_update_form = document.getElementById("closeUpdateForm");
+
+const btn_update_form = document.getElementById("submit-updatebook");
+
+const btn_confirm_delete = document.getElementById("confirm-delete");
+const btn_cancel_delete = document.getElementById("cancel-delete");
+
 // Search
 const searchByNameText = document.getElementById('search_value');
 const searchByInputMin = document.getElementById('min');
@@ -39,12 +57,31 @@ const priceInput = document.getElementById('price');
 const authorInput = document.getElementById('author');
 const publisherInput = document.getElementById('publisher');
 
+// Event update book
+const nameUpdateInput = document.getElementById('name-update');
+const priceUpdateInput = document.getElementById('price-update');
+const authorUpdateInput = document.getElementById('author-update');
+const publisherUpdateInput = document.getElementById('publisher-update');
+
 // Div overlay
+const divAddBook = document.getElementById("overlay-add-book");
+const divUpdateBook = document.getElementById("overlay-update-book");
+const divShowCart = document.getElementById("overlay-show-cart");
+
 const divOverlayLevel1 = document.getElementById("overlay-level1");
-const mainDiv = document.getElementById("main-content");
+const divOverlayMiddle = document.getElementById("overlay-level-middle");
+
+const divConfirmDelete = document.getElementById("overlay-delete-book");
+// P
+const pShowPrice = document.getElementById("totalPrice-Paragraph");
+
 
 let currentID; // Tăng dần
 let books; // Books trong mảng
+
+const saveCartToLS = () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 const saveToLS = () => {
     localStorage.setItem('books', JSON.stringify(books));
@@ -55,16 +92,18 @@ const saveCurID = () => {
 }
 
 const setupDefaultValue = () => {
-    currentID = localStorage.getItem('currentID');
+    currentID = localStorage.getItem('currentID'); // Lấy ID của book
     currentID = currentID ? parseInt(currentID) : 0;
-    books = JSON.parse(localStorage.getItem('books')) || [];
-    // console.log(currentID, books);
+    books = JSON.parse(localStorage.getItem('books')) || []; // Lấy books tồn tại trong localstorage
+    cart = JSON.parse(localStorage.getItem('cart')) || defaultCartValue();
 }
 
-const createAddToCartButton = (book) => {
+const createAddToCartButton = (book) => { // Add item to cart
     const itemAddToCart = document.createElement("td"); // 1 ô trong bảng
     const button = document.createElement("button"); // tạo ra 1 span
     button.textContent = "Add to cart";
+    button.classList.add("btn");
+    button.classList.add("btn-secondary");
     itemAddToCart.appendChild(button);
     button.addEventListener('click', function () {
         // Thêm book vào cart
@@ -99,40 +138,66 @@ const createAddToCartButton = (book) => {
         cart.items = [];
         cart.items.push(...temp);
         // List item, thêm cái nào cart.items
-
-        // cart.items đang chứa toàn bộ sản phẩm
-        let totalItems = 0; // Total items
-        for(let item of cart.items){
-            console.log(item);
-            totalItems += +item.quantity;
-        }
-        // reduce
-        btn_show_cart.textContent = `Show cart (${totalItems})` // ES6
-        // btn_show_cart.textContent = "Show cart (" + totalItems + ")" // Cách cũ
-        // totalItems
-
-        showCart();
+        showData(cart);
+        saveCartToLS();
     })
     
     return itemAddToCart;
 }
 
+const showData = (cart) => {
+    // cart.items đang chứa toàn bộ sản phẩm
+    let totalItems = 0; // Total items
+    let totalPrices = 0;
+    for(let item of cart.items){
+        console.log(item);
+        totalItems += +item.quantity;
+        totalPrices += +item.quantity * +item.price;
+    }
+
+    btn_show_cart.textContent = `Show cart (${totalItems})` // ES6
+    pShowPrice.textContent = `Total Price: $${totalPrices}`
+    btn_show_cart_form.textContent = `Cart (${totalItems})`;
+}
+
+const createUpdateButton = (book) => {
+    const itemAddToDelete = document.createElement("td");
+    const button = document.createElement("button");
+    button.textContent = "Update Item";
+    button.classList.add("btn");
+    button.classList.add("btn-warning");
+    itemAddToDelete.appendChild(button)
+    button.addEventListener('click', function () {
+        // Implement here
+        // Show form update ra
+        divUpdateBook.classList.remove('hidden');
+        divOverlayMiddle.classList.remove('hidden')
+
+        // Dùng cái tham số book, để truyền thông tin vào form update
+
+        nameUpdateInput.value = book.name;
+        priceUpdateInput.value = book.price;
+        authorUpdateInput.value = book.author;
+        publisherUpdateInput.value = book.publisher;
+    })
+    return itemAddToDelete;
+}
+
+let currentDeleteId = -1;
 const createDeleteButton = (book) => {
     const itemAddToDelete = document.createElement("td");
     const button = document.createElement("button");
     button.textContent = "Delete Item";
+    button.classList.add("btn");
+    button.classList.add("btn-danger");
     itemAddToDelete.appendChild(button)
     button.addEventListener('click', function () {
-        const temp = [];
-        console.log(book.id);
-        for (let item of books) {
-            if (item.id !== book.id) {
-                temp.push(item);
-            }
-        }
-        books = [...temp];
-        saveToLS();
-        showBooks(books);
+
+        currentDeleteId = book.id;
+
+        divConfirmDelete.classList.remove("hidden");
+        divOverlayMiddle.classList.remove("hidden");
+
     })
     return itemAddToDelete;
 }
@@ -149,10 +214,12 @@ const showBooks = (array) => {
             itemDetail.innerHTML = book[property];
             row.appendChild(itemDetail);
         }
+        // Append button add to cart
+        row.appendChild(createAddToCartButton(book)); // Thêm tính năng add vào cart
+        // 
+        row.appendChild(createUpdateButton(book)); // Thêm tính năng update 
         //
-        row.appendChild(createAddToCartButton(book));
-        //
-        row.appendChild(createDeleteButton(book));
+        row.appendChild(createDeleteButton(book)); // Thêm tính năng xóa 
 
         table.appendChild(row);
     }
@@ -199,9 +266,45 @@ const appendToCart = (book, property, row) => {
 const setupShop = () => {
     setupDefaultValue(); // Get value từ localstorage
     showBooks(books); // show books
+    showCart();
+    showData(cart);
 }
+
 setupShop(); // Chạy đầu tiên
 
+
+// Show form
+const showAddBookForm = () => {
+    divAddBook.classList.remove("hidden");
+    divOverlayMiddle.classList.remove("hidden")
+}
+
+const closeAddForm = () => {
+    divAddBook.classList.add("hidden");
+    divOverlayMiddle.classList.add("hidden")
+}
+
+const showCartForm = () => {
+    divShowCart.classList.remove("hidden");
+    divOverlayMiddle.classList.remove("hidden")
+}
+
+const closeCartForm = () => {
+    divShowCart.classList.add("hidden");
+    divOverlayMiddle.classList.add("hidden")
+}
+
+const closeUpdateForm = () => {
+    divUpdateBook.classList.add("hidden")
+    divOverlayMiddle.classList.add("hidden")
+}
+
+const closeDeleteConfirmForm = () => {
+    divConfirmDelete.classList.add("hidden");
+    divOverlayMiddle.classList.add("hidden");
+
+    currentDeleteId = -1;
+}
 
 // Hàm tính năg
 const addBook = () => {
@@ -252,15 +355,6 @@ const toggleSortOrder = () => {
     showBooks(books);
 }
 
-const showOrderForm = () => {
-    divOverlayLevel1.classList.add("overlay-level1");
-    divOverlayLevel1.classList.remove("hidden");
-
-    mainDiv.classList.add("capacity-low")
-    mainDiv.classList.remove("capacity-default")
-
-}
-
 const closeOverlay = (event) => {
     console.log(event.key);
 
@@ -280,16 +374,32 @@ const closeOverlay = (event) => {
 
 }
 
+const showOrderForm = () => {
+    divOverlayLevel1.classList.remove("hidden");
+    divOverlayMiddle.classList.remove("hidden")
+
+}
+
 const closeOverlayByClick = () => {
     closeOL();
 }
 
 const closeOL = () => {
-    divOverlayLevel1.classList.remove("overlay-level1");
     divOverlayLevel1.classList.add("hidden");
+    divOverlayMiddle.classList.add("hidden");
+}
 
-    mainDiv.classList.remove("capacity-low")
-    mainDiv.classList.add("capacity-default")
+const deleteBook = () => {
+    const temp = [];
+    for (let item of books) {
+        if (item.id !== currentDeleteId) {
+            temp.push(item);
+        }
+    }
+    books = [...temp];
+    saveToLS();
+    showBooks(books);
+    closeDeleteConfirmForm();
 }
 
 
@@ -299,9 +409,19 @@ btn_search.addEventListener('click', searchBooks);
 btn_search_price.addEventListener('click', findByPriceRange);
 btn_show_cart.addEventListener('click', showCart);
 btn_order.addEventListener('click', showOrderForm);
-btn_order.addEventListener('mouseover', showOrderForm)
+btn_order.addEventListener('mouseover', showOrderForm);
 // btn_order.addEventListener('mouseleave', closeOL)
 
-btn_close_modal_overlay.addEventListener('click', closeOverlayByClick)
+btn_show_add_form.addEventListener('click', showAddBookForm);
+btn_show_cart_form.addEventListener('click', showCartForm);
 
-document.addEventListener('keydown', closeOverlay)
+btn_close_add_form.addEventListener('click', closeAddForm);
+btn_close_cart_form.addEventListener('click', closeCartForm);
+btn_close_update_form.addEventListener('click', closeUpdateForm);
+
+btn_close_modal_overlay.addEventListener('click', closeOverlayByClick);
+
+btn_confirm_delete.addEventListener('click', deleteBook)
+btn_cancel_delete.addEventListener('click', closeDeleteConfirmForm);
+
+document.addEventListener('keydown', closeOverlay);
