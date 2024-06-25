@@ -1,0 +1,20 @@
+class Computer {
+    constructor(id, name, price, modal, ram, cpu, gpu, mainboard) {
+        modal = PC/ Laptop
+    }
+}
+
+Hôm nay 25/06
+Xây dựng 1 form bán hàng, chứa đối tượng Computer
+- Chỉ xây dựng form
+- Search tính năng
+- Giao diện list
+- Giao diện thêm mới
+- Giao diện sửa
+- Tạo các nút sửa, xóa, sort
+- Cart/ Nếu có
+
+Dựa vào code day11
+Yêu cầu: Logic, tập trung chủ yếu vào onclick,
+- Click -> Show form -> Đóng form => Tập trung vào đây
+- Có CSS
