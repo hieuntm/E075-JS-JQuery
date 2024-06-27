@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js.js" defer></script>
+    <style>
+        .css {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 50%;
+            background-color: gray;
+            border-radius: 5px;
+            box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add, update, delete, sort, order -->
+    <div id="function-div" style="display: none" class="css">
+        <p>Hello wolrd 2</p>
+        <!-- Lấy button rồi tạo event click vào close form -->
+        <button id="closeBtn">Close form</button>
+    </div>
+
+    <!-- Always display -->
+    <div id="main-content">
+        <p>Hello wolrd</p>
+        <!-- Lấy button rồi tạo event click vào show form -->
+        <button id="openBtn">Open form</button> 
+    </div> 
+</body>
+</html>

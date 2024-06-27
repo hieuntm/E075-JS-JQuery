@@ -1,0 +1,13 @@
+Chúng ta hãy quay trở lại nghiên cứu của A và B về loài chó. Lần này, họ muốn chuyển đổi tuổi của chó sang tuổi của con người và tính 
+tuổi trung bình của những con chó trong nghiên cứu của họ.
+
+Tạo hàm 'calcAverageHumanAge', chấp nhận một mảng độ tuổi của chó ('ages') và thực hiện những việc sau theo thứ tự:
+
+1. Tính tuổi chó theo năm của con người bằng công thức sau: nếu chó <= 2 tuổi thì humanAge = 2 * dogAge. Nếu chó > 2 tuổi, 
+humanAge = 16 + dogAge * 4.
+2. Loại trừ tất cả những con chó dưới 18 tuổi
+3. Tính tuổi trung bình của tất cả chó trưởng thành 
+4. Chạy hàm cho cả hai tập dữ liệu thử nghiệm
+
+DỮ LIỆU KIỂM TRA 1: [5, 2, 4, 1, 15, 8, 3]
+DỮ LIỆU KIỂM TRA 2: [16, 6, 10, 5, 6, 1, 4]
