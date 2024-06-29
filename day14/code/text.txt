@@ -1,0 +1,10 @@
+// Add => Ko quan tâm về id
+// Update/Delete => Cần phải biết id
+// Nếu như mà update và delete ko biết id, thì có nghĩa
+// nó đang biết sửa vào row nào, nó có thể làm ảnh hưởng đến toàn bộ dữ liệu
+
+
+// Modal, overlay
+// Error => Tối quan trọng, bản chất: Tái sử dụng nó
+
+// Add và update => Tương đương
