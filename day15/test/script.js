@@ -16,8 +16,14 @@ const div = document.getElementById("items");
 
 arr.forEach((item, index) => {
     const newDiv = document.createElement("div")
-    if(index % 4 == 0){
+    if(index % 4 === 0){
         newDiv.classList.add("item1")
+        //
+        newDiv.style.color = 'red'
+        newDiv.style.backgroundColor = 'blue'
+    } else if(index % 4 === 1){
+        newDiv.classList.add("item2")
+
     }
 
 })
