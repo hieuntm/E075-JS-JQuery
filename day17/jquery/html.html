@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css.css" />
+    <script>
+      $(() => {
+        $("#btn").on("click", function () {
+          // fadeIn, faceOut, fadeToggle, fadeTo
+          // slideUp, slideDown, slideToggle
+          // => fadeIn(time, callbackFunction)
+          // => fadeIn(time, callbackFunction)
+          // => fadeTo(time, opactity, callbackFunction)
+          // animate
+          // stop
+          // chain methods
+          // callback trong jQuery
+          //   $("#div1").fadeIn(2000); // => Time: milisecond
+          //   $("#div2").fadeIn("fast"); // => slow, fast
+          //   $("#div3").fadeIn();
+          //   $("#div1").fadeOut(2000); // => Time: milisecond
+          //   $("#div2").fadeOut("fast"); // => slow, fast
+          //   $("#div3").fadeOut();
+          //   $("#div1").fadeToggle(2000); // => Time: milisecond
+          //   $("#div2").fadeToggle("fast"); // => slow, fast
+          //   $("#div3").fadeToggle();
+          // opacity
+          //   $("#div1").fadeTo(2000, 0.7); // => Time: milisecond, opacity
+          //   $("#div2").fadeTo("fast", 0.5); // => slow, fast, opacity
+          //   $("#div3").fadeTo(2000, 0.3);
+          //   $("#div1").slideUp(2000); // => Time: milisecond
+          //   $("#div2").slideUp("fast"); // => slow, fast
+          //   $("#div3").slideUp();
+          //   $("#div1").slideDown(2000); // => Time: milisecond
+          //   $("#div2").slideDown("fast"); // => slow, fast
+          //   $("#div3").slideDown();
+          //   $("#div1").slideToggle(2000); // => Time: milisecond
+          //   $("#div2").slideToggle("fast"); // => slow, fast
+          //   $("#div3").slideToggle();
+          // CSS Animate: keyframe: 0% 20% 30% 50%, 100%, 0, 1
+          //animate(object, duration)
+          // chain => Xích, chuỗi các hành động liên tục
+          $("#div1")
+            .animate(
+              {
+                height: "300px",
+                width: "400px",
+                //   backgroundColor: "blue",
+              },
+              2000,
+              () => {
+                alert("Animated done");
+              }
+            )
+            .slideUp(3000)
+            .slideDown(3000)
+            .fadeOut(2000);
+        });
+
+        $("#btnStop").on("click", function () {
+          $("#div1").stop();
+        });
+
+        // callback
+        $("#btn2").on("click", function () {
+          $("#div2").slideUp(2000, function () {
+            alert("done slideUp");
+          });
+        });
+        // gioonsg nhau
+        $("#btn2").on("click", function () {
+          $("#div2").slideUp(2000);
+          alert("done slideUp");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="btn">Click me</button>
+    <button id="btn2">Click 2me</button>
+
+    <button id="btnStop">Stop me</button>
+
+    <div id="div1" class="d1"></div>
+    <div id="div2" class="d2"></div>
+    <div id="div3" class="d3"></div>
+  </body>
+</html>

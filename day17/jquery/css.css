@@ -1,0 +1,20 @@
+.d1 {
+  background-color: red;
+  height: 100px;
+  width: 100px;
+  /* display: none; */
+}
+
+.d2 {
+  background-color: yellow;
+  height: 100px;
+  width: 100px;
+  /* display: none; */
+}
+
+.d3 {
+  background-color: green;
+  height: 100px;
+  width: 100px;
+  /* display: none; */
+}
