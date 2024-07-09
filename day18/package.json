@@ -1,0 +1,15 @@
+{
+  "name": "day18",
+  "version": "1.0.0",
+  "main": "nodejs.js",
+  "scripts": {
+    "start": "nodemon nodejs.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
